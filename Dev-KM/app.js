@@ -1,6 +1,6 @@
 
 // load data
-d3.csv("data/2013-2017_Math_Test_Results-Borough.csv")
+d3.csv("Data/2013-2017_Math_Test_Results-Borough.csv")
   .then(function(mathAll) {
     console.log(mathAll);
 
