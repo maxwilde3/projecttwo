@@ -34,10 +34,22 @@ d3.csv("2016_DOE_High_School_Directory.csv")
         console.log(locationdata);
 
         // Grab the name of the school, lattitude, and longitude from csvdata
+    var amount = locationdata.length;
     var school = locationdata.map(data => data.school_name);
     var latitude = locationdata.map(data => data.Latitude);
     var longitude = locationdata.map(data => data.Longitude);
+    console.log(amount);
     console.log(school);
     console.log(latitude);
     console.log(longitude);
+    
+    var i;
+    for (i = 0; i< amount; i++) {
+
+      var marker = L.marker([latitude[i], longitude[i]]).addTo(myMap);
+      marker.bindPopup(school[i]);
+
+    }
+  
     });
+    
