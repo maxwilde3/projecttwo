@@ -1,26 +1,57 @@
 
 // load data
-d3.csv("Data/2013-2017_Math_Test_Results-Borough.csv")
+d3.csv("Data/math_all.csv")
   .then(function(mathAll) {
     console.log(mathAll);
 
     // list of the boroughs and grades included
-    var boroughs = mathAll.map(data => data.Borough);
-    var grades = mathAll.map(data => data.Grade);
+    var boroughs = mathAll.map(data => data.borough);
+    var grades = mathAll.map(data => data.grade);
 
-    var passRate = mathAll.map(data => data.Level34_percent);
+    var passRate = mathAll.map(data => data.level3_4_);
 
     console.log("boroughs", boroughs);
     console.log("grades", grades);
     console.log("pass rate", passRate);
 
     mathAll.forEach(function(data) {
-      data.passrate = +data.Level34_percent;  // needed to change this column name
-      console.log("Borough:", data.Borough);
-      console.log("Grade:", data.Grade);
-      console.log("Pass Rate:", data.Level34_percent);
+      data.passrate = +data.level3_4_;
+      console.log("Borough:", data.borough);
+      console.log("Grade:", data.grade);
+      console.log("Pass Rate:", data.level3_4_);
     });
   })
   .catch(function(error) {
     console.log(error);
   });
+
+// TO DO: plot for math by year (color-coded by borough)
+// TO DO: Use one csv and filter it as needed
+
+
+/* initialize a default page with one first year */
+function init() {
+
+  // select selDataset from index.html
+  var selector = d3.select("#selDataset");
+
+  // // insert all years as options to select
+  // d3.csv("Data/math_all.csv").then((d) => {
+
+    // // grab all years
+    // var academicYear = d.map(d => d.year);
+    // print(academicYear)
+
+    // hard code the years, for now so the years fit with the rest of the pages
+    academicYear = [2013, 2014, 2015, 2016, 2017]
+
+    // append all years
+    academicYear.forEach((year) => {
+      selector.append("option").text(year).property("value", year);
+
+   // });
+
+  });
+}
+
+init();
