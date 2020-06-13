@@ -49,14 +49,7 @@ d3.csv("2016_DOE_High_School_Directory.csv")
       var marker = L.marker([latitude[i], longitude[i]]).addTo(myMap);
       marker.bindPopup(school[i]);
 
-      var heatarray = [];
-      heatarray.push(latitude, longitude);
-      console.log(heatarray)
-
-      //var heat = L.heatLayer(heatarray, {
-      //    radius: 15,
-    //      blur: 15
-    //  }).addTo(myMap);
+     
 
     }
   
