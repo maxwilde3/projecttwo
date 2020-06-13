@@ -35,13 +35,6 @@ function init() {
   // select selDataset from index.html
   var selector = d3.select("#selDataset");
 
-  // // insert all years as options to select
-  // d3.csv("Data/math_all.csv").then((d) => {
-
-    // // grab all years
-    // var academicYear = d.map(d => d.year);
-    // print(academicYear)
-
     // hard code the years, for now so the years fit with the rest of the pages
     academicYear = [2013, 2014, 2015, 2016, 2017]
 
@@ -52,6 +45,16 @@ function init() {
    // });
 
   });
+}
+
+
+/* Update all of the plots any time that a new sample is selected */
+
+// the optionChanged function will update the subject ID when selected in the dropdown
+function optionChanged(newYear) {
+
+  buildCharts(newYear); // update charts
+
 }
 
 init();
