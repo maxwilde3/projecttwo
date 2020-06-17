@@ -1,6 +1,4 @@
-function filterYears(testdata) {
-    return testdata.Year = 2017;
-}
+
 
 d3.csv("passratebyboroughbyyear.csv")
     .then(function (eladata) {
@@ -10,15 +8,16 @@ d3.csv("passratebyboroughbyyear.csv")
         var amount = eladata.length;
         var borough = eladata.map(data => data.Borough);
         var percentpass = eladata.map(data => data.percentpass);
-        var eladata2017 = eladata.filter(filterYears);
+        var year = eladata.map(data => data.Year);
+        var number_tested =eladata.map(data => data.Number_Tested);
 
         // Check to make sure your are filtering your movies.
-        console.log(eladata2017);
-
-
+        
         console.log(amount);
         console.log(borough);
         console.log(percentpass);
+        console.log(year);
+        console.log(number_tested);
 
         var trace1 = {
             x: borough,
@@ -35,5 +34,21 @@ d3.csv("passratebyboroughbyyear.csv")
         };
 
         Plotly.newPlot("map", data, layout);
+
+        var trace2 = {
+            x: borough,
+            y: number_tested,
+            type: 'bar'
+        };
+        var data2 = [trace2];
+
+        var layout2 = {
+            title: "Number of Students Tested in 2017",
+            xaxis: { title: "Borough" },
+            yaxis: { title: "Number Tested" }
+        };
+        
+        Plotly.newPlot("scatter", data2, layout2)
+
 
     });
