@@ -1,6 +1,6 @@
 
 
-d3.csv("passratebyboroughbyyear.csv")
+d3.csv("static/data/passratebyboroughbyyear.csv")
     .then(function (eladata) {
         console.log(eladata);
 
@@ -33,7 +33,7 @@ d3.csv("passratebyboroughbyyear.csv")
             yaxis: { title: "% Pass" }
         };
 
-        Plotly.newPlot("map", data, layout);
+        Plotly.newPlot("bar1", data, layout);
 
         var trace2 = {
             x: borough,
@@ -48,7 +48,7 @@ d3.csv("passratebyboroughbyyear.csv")
             yaxis: { title: "Number Tested" }
         };
         
-        Plotly.newPlot("scatter", data2, layout2)
+        Plotly.newPlot("bar2", data2, layout2)
 
 
     });
