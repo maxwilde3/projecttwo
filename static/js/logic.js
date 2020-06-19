@@ -3,12 +3,11 @@
 // NYC student poverty ratets: https://infohub.nyced.org/reports/school-quality/information-and-data-overview
 
 // this file has the ELA pass rate for each borough in 2017
-var geoData2 = "static/data/boroughs.geojson";
-
-d3.json(geoData2, function(data) {
+var geoData = "static/data/boroughs.geojson";
+d3.json(geoData, function(data) {
 
   // Create a new choropleth layer
-  var geojson2 = L.choropleth(data, {
+  var geojson = L.choropleth(data, {
 
     // Define what  property in the features to use
     valueProperty: "ratio",
@@ -38,13 +37,13 @@ d3.json(geoData2, function(data) {
     }
   });
 
-  createMap(geojson2);
+  createMap(geojson);
 
  });
 
-function createMap(geojson2) {
+function createMap(geojson) {
   
-  console.log(geojson2);
+  console.log(geojson);
 
   // Adding tile layer
   var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -74,15 +73,15 @@ function createMap(geojson2) {
 
     // overlay layer
   var overlayMaps = {
-    Boroughs: geojson2
-    //Districts: geojson2
+    Boroughs: geojson
+    //Districts: geojson
   };
 
     // create map object
   var myMap = L.map("map", {
       center: [40.71, -74.01],
       zoom: 10.5,
-      layers: [streetmap, geojson2]  // to display when page load
+      layers: [streetmap, geojson]  // to display when page load
   });
   
     // layer control with baseMaps and overlayMaps
@@ -97,8 +96,8 @@ function createMap(geojson2) {
     // legend 2
     legend2.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
-      var limits = geojson2.options.limits;
-      var colors = geojson2.options.colors;
+      var limits = geojson.options.limits;
+      var colors = geojson.options.colors;
       var labels = [];
   
       // Add min & max

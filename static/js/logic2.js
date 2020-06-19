@@ -3,12 +3,6 @@
 // NYC student poverty ratets: https://infohub.nyced.org/reports/school-quality/information-and-data-overview
 
 // Load in geojson data
-var geoData = "static/data/nyc_school_districts.geojson";
-
-d3.json(geoData, function(data) {
-  console.log(data);
-});
-
 
 var geoData2 = "static/data/nyc_school_districts.geojson";
 
@@ -85,7 +79,7 @@ function createMap(geojson2) {
   };
 
     // create map object
-  var myMap = L.map("map", {
+  var myMap2 = L.map("map2", {
       center: [40.71, -74.01],
       zoom: 11,
       layers: [streetmap, geojson2]  // to display when page load
@@ -94,7 +88,7 @@ function createMap(geojson2) {
     // layer control with baseMaps and overlayMaps
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
-    }).addTo(myMap);  // add these to the map
+    }).addTo(myMap2);  // add these to the map
 
 
     // Set up the legend 2
@@ -125,7 +119,7 @@ function createMap(geojson2) {
     };
   
     // Adding legend to the map
-    legend2.addTo(myMap);
+    legend2.addTo(myMap2);
   
 }
 
